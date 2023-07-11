@@ -1,0 +1,43 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+argh = "==0.26.2"
+atlassian-python-api = "3.10.0"
+alembic = "1.6.5"
+bcrypt = "3.2.0"
+colored = "==1.4.2"
+cached-property = "1.5.2"
+flask-migrate = "==3.0.1"
+flask-cors = "==3.0.10"
+flask-uuid = "==0.2"
+gunicorn = "==20.0.4"
+pyyaml = "==5.3.1"
+python-dateutil = "==2.8.1"
+pycryptodome = "3.10.1"
+watchdog = "==2.0.0"
+
+
+[dev-packages]
+mypy = "==0.812"
+sqlalchemy-stubs = "==0.4"
+bandit = "==1.6.2"
+flake8 = "==3.8.4"
+flake8-blind-except = "==0.1.1"
+flake8-logging-format = "==0.6.0"
+flake8-self = "==0.2.2"
+flake8-super-call = "==1.0.0"
+flake8-bugbear = "==20.1.4"
+flake8-print = "==4.0.0"
+pep8-naming = "==0.11.1"
+safety = "==1.9.0"
+pylint = "==2.3.1"
+pylint-flask-sqlalchemy = "==0.2.0"
+pytest = "==6.2.2"
+pytest-cov = "==2.11.1"
+
+[requires]
+python_version = "3.10"
+python_full_version = "3.10.6"
