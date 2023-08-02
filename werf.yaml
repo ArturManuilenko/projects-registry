@@ -1,0 +1,10 @@
+configVersion: 1
+project: accountprojectregistry
+
+---
+image: service_project_registry__common_python
+dockerfile: srv/common-python/Dockerfile
+
+---
+image: service__communication__balancer
+dockerfile: src/service__communication__balancer/Dockerfile

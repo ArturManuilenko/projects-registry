@@ -1,0 +1,58 @@
+image: gitlab.neroelectronics.by:5050/unic-lab/system/docker-images/basic-ci:1.0.4
+
+stages:
+  - check_and_build
+  - deploy
+
+linting:
+  stage: check_and_build
+  script:
+    - ./src/bin-lint.sh
+
+#run_tests:
+#   stage: check_and_build
+#   before_script:
+#     - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.neroelectronics.by/".insteadOf "git@gitlab.neroelectronics.by:"
+#   script:
+#     - ./src/bin-tests.sh
+
+build_images:
+  stage: check_and_build
+  services:
+    - name: gitlab.neroelectronics.by:5050/unic-lab/system/docker-images/dind:1.0.0
+      alias: docker
+  only:
+    - dev
+    - qa
+    - staging
+    - prod
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - export REPO_REGISTRY_URL=${CI_REGISTRY}/unic-lab/projects/projects-registry/projects-registry
+  script:
+    - export WERF_ENV=${CI_COMMIT_BRANCH}
+    - export WERF_REPO=${REPO_REGISTRY_URL}
+    - werf build service_project_registry__common_python service__communication__balancer
+    - werf compose config --dry-run --log-quiet=True >> build_images.env
+  artifacts:
+    paths:
+      - build_images.env
+
+deploy:
+  stage: deploy
+  before_script:
+    - export REPO_REGISTRY_URL=${CI_REGISTRY}/unic-lab/projects/projects-registry/projects-registry
+    - export WERF_REPO=${REPO_REGISTRY_URL}
+    - export CWD=$(pwd)
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo "${SSH_ID_RSA}" | base64 -d > ~/.ssh/id_rsa_deployment && chmod 400 ~/.ssh/id_rsa_deployment && sha1sum ~/.ssh/id_rsa_deployment
+  script:
+    - $(cat build_images.env| grep export)
+    - ansible --private-key ~/.ssh/id_rsa_deployment -i ${CWD}/srv/ansible-inventory.${CI_COMMIT_BRANCH}.yml -vvv  all -m ping
+    - ansible-playbook -i ${CWD}/srv/ansible-inventory.${CI_COMMIT_BRANCH}.yml --private-key ~/.ssh/id_rsa_deployment -v ${CWD}/srv/ansible-deploy-new-version-playbook.yml
+  only:
+    - dev
+    - qa
+    - staging
+    - prod
+  dependencies:
+    - build_images

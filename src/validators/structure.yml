@@ -1,0 +1,86 @@
+instance:
+  __default__:
+    type: src.manager__common__db.models.{{name}}:{{name|capitalize}}
+
+  project:
+    validate_fields_methods:
+      src.validators.object_validators.project.key:project_name_min_length:
+        - key
+      src.validators.object_validators.project.key:project_name_max_length:
+        - key
+      src.validators.object_validators.project.key:has_jira:
+        - key
+      src.validators.object_validators.project.key:has_confluence:
+        - key
+      src.validators.object_validators.project.key:has_gitlab:
+        - key
+      src.validators.object_validators.project.key:has_trello:
+        - key
+      src.validators.object_validators.project.key:has_kiwi:
+        - key
+      src.validators.object_validators.project.key:has_epic:
+        - key
+      src.validators.object_validators.project.key:has_manager:
+        - key
+      src.validators.object_validators.project.key:has_category:
+        - key
+      src.validators.object_validators.project.key:has_type:
+        - key
+      src.validators.object_validators.project.key:has_release:
+        - key
+      src.validators.object_validators.project.key:has_team:
+        - key
+      # TODO: вынести в валидаторы релизов
+      # src.validators.object_validators.project.key:has_release_date:
+         # - key
+      src.validators.object_validators.project.key:has_issues:
+        - key
+
+  release:
+    validate_fields_methods:
+      src.validators.object_validators.task.description:has_description:
+        - description
+
+  task:
+    validate_fields_methods:
+      src.validators.object_validators.task.assignee:has_selected_assignee:
+        - user_assignee_id
+      src.validators.object_validators.task.components:has_components:
+        - components
+      src.validators.object_validators.task.description:has_description:
+        - description
+      src.validators.object_validators.task.expected_result:has_expected_result:
+        - expected_result
+      src.validators.object_validators.task.story_points:has_story_points:
+        - story_points
+      src.validators.object_validators.task.subtasks:has_subtasks:
+        - subtasks
+      src.validators.object_validators.task.time_original_estimate:has_time_original_estimate:
+        - time_original_estimate
+      src.validators.object_validators.task.version:has_version:
+        - version
+
+  epic:
+    validate_fields_methods:
+      src.validators.object_validators.epic.expected_result:has_expected_result:
+        - expected_result
+      src.validators.object_validators.epic.assignee:has_selected_assignee:
+        - user_assignee_id
+  
+  bug:
+    validate_fields_methods:
+      src.validators.object_validators.bug.expected_result:has_expected_result:
+        - expected_result
+      src.validators.object_validators.bug.assignee:has_selected_assignee:
+        - user_assignee_id
+  
+  story:
+    validate_fields_methods:
+      src.validators.object_validators.story.epic_link:has_epic:
+        - epic_link
+      src.validators.object_validators.story.description:has_description:
+        - description
+      src.validators.object_validators.story.assignee:has_assignee:
+        - user_assignee_id
+      src.validators.object_validators.story.story_points:has_story_points:
+        - story_points

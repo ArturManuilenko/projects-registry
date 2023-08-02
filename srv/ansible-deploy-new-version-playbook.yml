@@ -1,0 +1,76 @@
+---
+- hosts: main_server
+  gather_facts: true
+  strategy: free
+  become: true
+  become_user: ulab-dev
+  vars:
+    APP_PATH: "/home/ulab-dev/ul_project_registry_service"
+    CWD: "{{ lookup('env', 'CWD') }}"
+    ENVIRONMENT: "{{ lookup('env', 'CI_COMMIT_BRANCH') }}"
+    WERF_REPO: "{{ lookup('env', 'REPO_REGISTRY_URL') }}"
+    REGISTRY_URL:  "{{ lookup('env', 'CI_REGISTRY') }}"
+    REGISTRY_USER: "{{ lookup('env', 'CI_REGISTRY_USER') }}"
+    REGISTRY_PASSWORD: "{{ lookup('env', 'CI_REGISTRY_PASSWORD') }}"
+    WERF_SERVICE_PROJECT_REGISTRY__COMMON_PYTHON_DOCKER_IMAGE_NAME: "{{ lookup('env', 'WERF_SERVICE_PROJECT_REGISTRY__COMMON_PYTHON_DOCKER_IMAGE_NAME') }}"
+    WERF_SERVICE__COMMUNICATION__BALANCER_DOCKER_IMAGE_NAME: "{{ lookup('env', 'WERF_SERVICE__COMMUNICATION__BALANCER_DOCKER_IMAGE_NAME') }}"
+    DATABASE_DEVICE_ENDPOINT: "{{ lookup('env', '{{ ENVIRONMENT }}_DEVICE_DATABASE_ENDPOINT') }}"
+    DEVICE_DB__USER_ID: "{{ lookup('env', '{{ ENVIRONMENT }}_DEVICE_DB__USER_ID') }}"
+  tasks:
+    - name: down all processing services
+      docker_compose:
+        debug: yes
+        project_src: "{{ APP_PATH }}"
+        files: "{{ APP_PATH }}/docker-compose.yml"
+        state: present
+        stopped: yes
+        remove_volumes: false
+      environment: &common_vars
+        ENVIRONMENT: "{{ ENVIRONMENT }}"
+        PROJECT: "{{ lookup('env', 'CI_PROJECT_NAME') }}"
+      ignore_errors: true
+
+    - name: Creates directory
+      file:
+        path: "{{ APP_PATH }}"
+        state: directory
+
+    - name: login to registry
+      docker_login:
+        registry: "{{ REGISTRY_URL }}"
+        username: "{{ REGISTRY_USER }}"
+        password: "{{ REGISTRY_PASSWORD }}"
+        reauthorize: yes
+
+    - name: Copy service docker-compose
+      copy:
+        src: "{{ CWD }}/srv/docker-compose.template.yml"
+        dest: "{{ APP_PATH }}/docker-compose.yml"
+        mode: "755"
+
+    - name: configure service docker-compose file
+      replace:
+        path: "{{ APP_PATH }}/docker-compose.yml"
+        regexp: "{{ item.regexp }}"
+        replace: "{{ item.replace }}"
+      with_items:
+        - {regexp: 'WERF_SERVICE_PROJECT_REGISTRY__COMMON_PYTHON_DOCKER_IMAGE_NAME', replace: "{{ WERF_SERVICE_PROJECT_REGISTRY__COMMON_PYTHON_DOCKER_IMAGE_NAME }}"}
+        - {regexp: 'WERF_SERVICE__COMMUNICATION__BALANCER_DOCKER_IMAGE_NAME', replace: "{{ WERF_SERVICE__COMMUNICATION__BALANCER_DOCKER_IMAGE_NAME }}"}
+        - {regexp: 'APPLICATION_ENV_VALUE', replace: "{{ ENVIRONMENT }}"}
+
+    - name: migrate data logger db
+      command: docker-compose -f {{ APP_PATH }}/docker-compose.yml run --rm manager__common__db bash /docker_app/src/manager__common__db/bin-migrate.sh --upgrade
+      environment:
+        *common_vars
+
+    - name: up all
+      docker_compose:
+        debug: yes
+        project_src: "{{ APP_PATH }}"
+        files: "{{ APP_PATH }}/docker-compose.yml"
+        state: present
+        build: false
+        pull: true
+      register: up_all
+      environment:
+        *common_vars

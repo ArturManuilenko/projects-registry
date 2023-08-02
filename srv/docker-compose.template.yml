@@ -1,0 +1,58 @@
+version: "3.8"
+
+volumes:
+  db_volume:
+
+services:
+  service__api:
+    image: WERF_SERVICE_PROJECT_REGISTRY__COMMON_PYTHON_DOCKER_IMAGE_NAME
+    restart: on-failure
+    environment:
+      ATLASSIAN_API_SERVER: http://unic-lab.atlassian.net
+      ATLASSIAN_API_TOKEN: qDEPM5b7Y25XHFh7H2VIAE6E
+      ATLASSIAN_API_EMAIL: jira-api-uprj@unic-lab.by
+      TEMPO_API_SERVER: https://api.tempo.io/core/3
+      TEMPO_API_TOKEN: gGPlXWc1kx7tGOdHhcC6Mga2boikwb
+      APPLICATION_SECRET_KEY: gCgEZsNbtki6fMKk
+      APPLICATION_PORT: 8008
+      APPLICATION_RELOAD: 1
+      SERVICE__DB__DB_URI: "postgresql+psycopg2://admin:admin@service__common__db:5432/app_db"
+      SERVICE__DB__SYS_USER_ID: "16e70d63-2c70-43b7-8f74-62f03584f550"
+      APPLICATION_ENV: APPLICATION_ENV_VALUE
+      JWT_PUBLIC_KEY: "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFvdSs5OGtoM3A2dURTZHZURW5ZVApyNVBSTHJzQ3JVRFRVWU1LanFPTGFTbnFWMmRuWjZLNDhERnhHWFJUcVoycXkyWmpTam5EdmJWazRUeWlhQTZkCjUwbTYvZzQ1OGxFN2ZxYjZtV0d6ajNpVW5HZm5yV2ZsT1VDQnhuMy9pYkRqbUExb21YbkFvdVV0QUtRQ0tvSTYKS2VGc2pvaWVSTzNVYVdNYnYwc0RheUtjOEFOUUFWOGFBY1Z6RTdtNjJYc2xUMHJ2TzBEQnByMHp0dFFXVkc0dApXYWZMbGhhdm43WFdxMzVpQWE5L1A0Rm45SUhOUkRMTHVGODc3SjN2c0NFOUxEdUxCS1Fkd0dZQ3ViNGpqRzVDCjR1RjlhTWoxa1pKSzAzWWVaVTVZZnBKSC9oOUV6MEFKRzI2ZTNMTWltQlBGT3NINUdjSXBFWGVFMCtXd3oxT1AKZVJzZXZ3Qzh4bWNPdEM2QkI1TkRNcS9nRmcvUitlVnpTYjBNUVJVRTgyYlJweTRhcmhwazllK3dBWDQ2TzgxNQpxa0VXQk8xSHJNajVpNmRIL2w2aDFONUVhZ0tLZXFBbU10YXorbDNxMzYwMThEY2V0dTNkZzV2Q3lBOGpRbVNFCm1TZ2tsL3pianV2QkNvS1k5Z0xBdzJRUDY3VDRCb0pOdUg3b25mL0RRa01yQTBuaCt6VWhROHdJNy9DemFDRWEKa0EvczVFemtLVFZqcXhTRXl2RGZqZUNlaHc2S01kbFl1YTVzS1Q5cXdrRDNxSnc3STZQK2hHd3padXNnQ1AvSQp0L1JDcTN5cG9LZjd1TWJ4WVJUU3ovaVhsaUh1a3VQRlh3T0Y5MTlBWWhSUFlRWlZjeG05WGVJOG9xYk92OG9sCm5sTGE5US9YWkxlSEtMWG05ZEU5VzJNQ0F3RUFBUT09Ci0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQ=="
+    command: "bash /docker_app/src/service__api/bin-start.sh"
+    expose:
+      - 8008
+
+  service__communication__balancer:
+    image: WERF_SERVICE__COMMUNICATION__BALANCER_DOCKER_IMAGE_NAME
+    ports:
+      - 80:80 # device__api
+    depends_on:
+      - service__api
+    command: [ nginx-debug, '-g', 'daemon off;' ]
+
+  service__common__db:
+    image: library/postgres:13.2-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: app_db
+    expose:
+      - 5432
+    volumes:
+      - db_volume:/var/lib/postgresql
+
+  manager__common__db:
+    image: WERF_SERVICE_PROJECT_REGISTRY__COMMON_PYTHON_DOCKER_IMAGE_NAME
+    environment:
+      SERVICE__DB__DB_URI: "postgresql+psycopg2://admin:admin@service__common__db:5432/app_db"
+      SERVICE__DB__SYS_USER_ID: "16e70d63-2c70-43b7-8f74-62f03584f550"
+    depends_on:
+      - service__common__db
+
+networks:
+  default:
+    external: true
+    name: ul_project_registry_pii_default
