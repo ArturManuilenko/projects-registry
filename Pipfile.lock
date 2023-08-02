@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "522451d0ce42367d896bfd302d03baf8a18eb4ed88dd012cd13d0911d7e74ad7"
+            "sha256": "daf42743965e6591762a3ebaa334b9d29422486a333f0fc50c910893980d5017"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -9,7 +9,7 @@
         },
         "sources": [
             {
-                "name": "nero_gitlab",
+                "name": "artur_m",
                 "url": "https://__token__:kZG7esv72n325czD7Wdg@gitlab.neroelectronics.by/api/v4/projects/996/packages/pypi/simple",
                 "verify_ssl": false
             }
@@ -18,10 +18,10 @@
     "default": {
         "alembic": {
             "hashes": [
-                "sha256:a21fedebb3fb8f6bbbba51a11114f08c78709377051384c9c5ead5705ee93a51",
+                "sha256:a21gitfedebb3fb8f6bbbba51a11114f08c78709377051384c9c5ead5705ee93a51",
                 "sha256:e78be5b919f5bb184e3e0e2dd1ca986f2362e29a2bc933c446fe89f39dbe4e9c"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.6.5"
         },
         "argh": {
@@ -29,14 +29,14 @@
                 "sha256:a9b3aaa1904eeb78e32394cd46c6f37ac0fb4af6dc488daa58971bdc7d7fcaf3",
                 "sha256:e9535b8c84dc9571a48999094fda7f33e63c3f1b74f3e5f3ac0105a58405bb65"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.26.2"
         },
         "atlassian-python-api": {
             "hashes": [
                 "sha256:cc0ef005250bc549662d92771af70c721980f055f9f8ea0c1ea7ca604f4d06bd"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==3.10.0"
         },
         "bcrypt": {
@@ -52,7 +52,7 @@
                 "sha256:cd1ea2ff3038509ea95f687256c46b79f5fc382ad0aa3664d200047546d511d1",
                 "sha256:cdcdcb3972027f83fe24a48b1e90ea4b584d35f1cc279d76de6fc4b13376239d"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==3.2.0"
         },
         "cached-property": {
@@ -60,7 +60,7 @@
                 "sha256:9fa5755838eecbb2d234c3aa390bd80fbd3ac6b6869109bfc1b499f7bd89a130",
                 "sha256:df4f613cf7ad9a588cc381aaf4a512d26265ecebd5eb9e1ba12f1319eb85a6a0"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.5.2"
         },
         "certifi": {
@@ -233,7 +233,7 @@
             "hashes": [
                 "sha256:056fac09d9e39b34296e7618897ed1b8c274f98423770c2980d829fd670955ed"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.4.2"
         },
         "db-utils": {
@@ -241,7 +241,7 @@
                 "sha256:02a54a339a503ed99f5e019f0eba3a92036b33a776b4610d325869db95901680",
                 "sha256:f01442c4c11cffdaf8ab230d9f4c6423a751e93113b83ffda4b4c54139b8b0b5"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.3.1"
         },
         "deprecated": {
@@ -269,7 +269,7 @@
                 "sha256:74efc975af1194fc7891ff5cd85b0f7478be4f7f59fe158102e91abb72bb4438",
                 "sha256:b60839393f3b84a0f3746f6cdca56c1ad7426aa738b70d6c61375857823181de"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==3.0.10"
         },
         "flask-migrate": {
@@ -277,7 +277,7 @@
                 "sha256:4d42e8f861d78cb6e9319afcba5bf76062e5efd7784184dd2a1cccd9de34a702",
                 "sha256:df9043d2050df3c0e0f6313f6b529b62c837b6033c20335e9d0b4acdf2c40e23"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==3.0.1"
         },
         "flask-sqlalchemy": {
@@ -292,7 +292,7 @@
             "hashes": [
                 "sha256:f9a8196eb896599ba9e74dcf713cfd1aca4669d418c19069e088620ae6294805"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.2"
         },
         "greenlet": {
@@ -366,7 +366,7 @@
                 "sha256:1904bb2b8a43658807108d59c3f3d56c2b6121a701161de0ddf9ad140073c626",
                 "sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==20.0.4"
         },
         "idna": {
@@ -547,7 +547,7 @@
                 "sha256:f977cdf725b20f6b8229b0c87acb98c7717e742ef9f46b113985303ae12a99da",
                 "sha256:fc7489a50323a0df02378bc2fff86eb69d94cc5639914346c736be981c6a02e7"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==3.10.1"
         },
         "python-dateutil": {
@@ -555,7 +555,7 @@
                 "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c",
                 "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==2.8.1"
         },
         "python-editor": {
@@ -584,7 +584,7 @@
                 "sha256:cc8955cfbfc7a115fa81d85284ee61147059a753344bc51098f3ccd69b0d7e0c",
                 "sha256:d13155f591e6fcc1ec3b30685d50bf0711574e2c0dfffd7644babf8b5102ca1a"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==5.3.1"
         },
         "requests": {
@@ -689,7 +689,7 @@
                 "sha256:fd4b56cfbe0d0d9c4fc431aceca75700a7f12d3737dc2e9cb2ec2ba649680425",
                 "sha256:fda5fc3586fc198c39d4a84ff04a785b95145ad8fc6538a8d8fe1fd37d67fdd7"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==2.0.0"
         },
         "werkzeug": {
@@ -879,7 +879,7 @@
                 "sha256:336620e220cf2d3115877685e264477ff9d9abaeb0afe3dc7264f55fa17a3952",
                 "sha256:41e75315853507aa145d62a78a2a6c5e3240fe14ee7c601459d0df9418196065"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.6.2"
         },
         "blinker": {
@@ -1066,7 +1066,7 @@
                 "sha256:749dbbd6bfd0cf1318af27bf97a14e28e5ff548ef8e5b1566ccfb25a11e7c839",
                 "sha256:aadae8761ec651813c24be05c6f7b4680857ef6afaae4651a4eccaef97ce6c3b"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==3.8.4"
         },
         "flake8-blind-except": {
@@ -1074,7 +1074,7 @@
                 "sha256:0d7d1adb4cabf2268d6eebb815a7a5014bcb7e8419f7a74339c46d0b8847b858",
                 "sha256:aca3356633825544cec51997260fe31a8f24a1a2795ce8e81696b9916745e599"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.1.1"
         },
         "flake8-bugbear": {
@@ -1082,14 +1082,14 @@
                 "sha256:a3ddc03ec28ba2296fc6f89444d1c946a6b76460f859795b35b77d4920a51b63",
                 "sha256:bd02e4b009fb153fe6072c31c52aeab5b133d508095befb2ffcf3b41c4823162"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==20.1.4"
         },
         "flake8-logging-format": {
             "hashes": [
                 "sha256:ca5f2b7fc31c3474a0aa77d227e022890f641a025f0ba664418797d979a779f8"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.6.0"
         },
         "flake8-polyfill": {
@@ -1104,14 +1104,14 @@
                 "sha256:5afac374b7dc49aac2c36d04b5eb1d746d72e6f5df75a6ecaecd99e9f79c6516",
                 "sha256:6c0efce658513169f96d7a24cf136c434dc711eb00ebd0a985eb1120103fe584"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==4.0.0"
         },
         "flake8-self": {
             "hashes": [
                 "sha256:9268faf434c7a132beec28574d9e9258f2040a886530aff31e5c8a2436904df2"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.2.2"
         },
         "flake8-super-call": {
@@ -1119,7 +1119,7 @@
                 "sha256:0486ebfb24e3bf104b1c1d7f823a51ebcefb3a26108b25cb3129a9e8a57ef145",
                 "sha256:61cfcd0c8ad78e1cf1f4d1225cb7513666ab9c5a9900a238b2c4abee8ad9a7de"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.0.0"
         },
         "flask": {
@@ -1394,7 +1394,7 @@
                 "sha256:d65cc1df038ef55a99e617431f0553cd77763869eebdf9042403e16089fe746c",
                 "sha256:d7da2e1d5f558c37d6e8c1246f1aec1e7349e4913d8fb3cb289a35de573fe2eb"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.812"
         },
         "mypy-extensions": {
@@ -1425,7 +1425,7 @@
                 "sha256:a1dd47dd243adfe8a83616e27cf03164960b507530f155db94e10b36a6cd6724",
                 "sha256:f43bfe3eea7e0d73e8b5d07d6407ab47f2476ccaeff6937c84275cd30b016738"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.11.1"
         },
         "pluggy": {
@@ -1467,7 +1467,7 @@
                 "sha256:5d77031694a5fb97ea95e828c8d10fc770a1df6eb3906067aaed42201a8a6a09",
                 "sha256:723e3db49555abaf9bf79dc474c6b9e2935ad82230b10c1138a71ea41ac0fff1"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==2.3.1"
         },
         "pylint-flask-sqlalchemy": {
@@ -1475,7 +1475,7 @@
                 "sha256:27f1fffb940adc9ac8f00ff7eb91ec39ca070c0f3bcec0d7f1c702a993d40505",
                 "sha256:8ede5baba1a465d8ba39d8383ffcf0889d7a6afeff44bd24177fcf529ba8aa81"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.2.0"
         },
         "pytest": {
@@ -1483,7 +1483,7 @@
                 "sha256:9d1edf9e7d0b84d72ea3dbcdfd22b35fb543a5e8f2a60092dd578936bf63d7f9",
                 "sha256:b574b57423e818210672e07ca1fa90aaf194a4f63f3ab909a2c67ebb22913839"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==6.2.2"
         },
         "pytest-cov": {
@@ -1491,7 +1491,7 @@
                 "sha256:359952d9d39b9f822d9d29324483e7ba04a3a17dd7d05aa6beb7ea01e359e5f7",
                 "sha256:bdb9fdb0b85a7cc825269a4c56b48ccaa5c7e365054b6038772c32ddcdc969da"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==2.11.1"
         },
         "pyyaml": {
@@ -1510,7 +1510,7 @@
                 "sha256:cc8955cfbfc7a115fa81d85284ee61147059a753344bc51098f3ccd69b0d7e0c",
                 "sha256:d13155f591e6fcc1ec3b30685d50bf0711574e2c0dfffd7644babf8b5102ca1a"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==5.3.1"
         },
         "requests": {
@@ -1526,7 +1526,7 @@
                 "sha256:23bf20690d4400edc795836b0c983c2b4cbbb922233108ff925b7dd7750f00c9",
                 "sha256:86c1c4a031fe35bd624fce143fbe642a0234d29f7cbf7a9aa269f244a955b087"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==1.9.0"
         },
         "setuptools": {
@@ -1594,7 +1594,7 @@
                 "sha256:5eec7aa110adf9b957b631799a72fef396b23ff99fe296df726645d01e312aa5",
                 "sha256:c665d6dd4482ef642f01027fa06c3d5e91befabb219dc71fc2a09e7d7695f7ae"
             ],
-            "index": "nero_gitlab",
+            "index": "artur_m",
             "version": "==0.4"
         },
         "stevedore": {
